@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-    O seu objetivo é aprender recursão para implementar o código que produzirá os fractais da pasta imagens. Faça o máximo que puder. Se enganchar em algum, pesquise na internet.
+O seu objetivo é aprender recursão para implementar o código que produzirá os fractais da pasta imagens. Faça o máximo que puder. Se enganchar em algum, pesquise na internet.
 
 ## Instalação
 
