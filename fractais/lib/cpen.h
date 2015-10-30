@@ -1,100 +1,52 @@
 #ifndef PENC_H
 #define PENC_H
 
-#include "pen.h"
+void pen_open(int largura, int altura);
 
-static Pen *spen;
+void pen_walk(float distance);
 
-void pen_open(int largura, int altura){
-    spen = new Pen(largura, altura);
-}
+void pen_close();
 
-void pen_walk(float distance){
-    spen->walk(distance);
-}
+void pen_left(float angulo);
 
-void pen_close(){
-    delete(spen);
-}
+void pen_right(float angulo);
 
-void pen_left(float angulo) {
-    spen->rotate(-angulo);
-}
+void pen_move(float x, float y);
 
-void pen_right(float angulo){
-    spen->rotate(angulo);
-}
+void pen_wait(int seconds);
 
-void pen_move(float x, float y){
-    spen->move(x, y);
-}
+void pen_wait();
 
-void pen_wait(int seconds){
-    spen->wait(seconds);
-}
+void pen_set_color(int R, int G, int B);
 
-void pen_wait(){
-    spen->wait();
-}
+void pen_set_back_color(int R, int G, int B);
 
+void pen_clear();
 
-void pen_set_color(int R, int G, int B){
-    spen->setColor(R, G, B);
-}
+void pen_up();
 
-void pen_set_back_color(int R, int G, int B){
-    spen->setBackColor(R, G, B);
-}
-
-void pen_clear(){
-    spen->clear();
-}
-
-void pen_up(){
-    spen->up();
-}
-void pen_down(){
-    spen->down();
-}
+void pen_down();
 
 
 //GETTERS and SETTERS
 
 
-void  pen_set_xy         (float x, float y){
-    spen->setXY(x, y);
-}
+void  pen_set_xy         (float x, float y);
 
-void  pen_set_heading    (float angulo){
-    spen->setHeading(angulo);
-}
+void  pen_set_heading    (float angulo);
 
-void  pen_set_speed(int velocidade){
-    spen->setSpeed(velocidade);
-}
+void  pen_set_speed(int velocidade);
 
-void pen_set_thickness(int espessura){
-    spen->setThickness(espessura);
-}
+void pen_set_thickness(int espessura);
 
-float pen_get_x(){
-    return spen->getX();
-}
+float pen_get_x();
 
-float pen_getY(){
-    return spen->getY();
-}
+float pen_getY();
 
-int   pen_get_speed(){
-    return spen->getSpeed();
-}
+int   pen_get_speed();
 
-float pen_get_heading(){
-    return spen->getHeading();
-}
-int   pen_get_thickness(){
-    return spen->getThickness();
-}
+float pen_get_heading();
 
+int   pen_get_thickness();
 
 #endif // PENC_H

@@ -11,8 +11,7 @@ void linha(Pen &p, int lado){
     linha(p, lado - 5);
 }
 
-
-int main(){
+void fractal(){
     Pen p(800, 600);
     //coloca o pincel na posicao x 300 y 500
     p.setXY(50, 50);
@@ -25,5 +24,9 @@ int main(){
     linha(p, 500);
     //espera clicar no botao de fechar
     p.wait();
-
 }
+
+//int main(){
+//    fractal();
+//    return 0;
+//}

@@ -8,7 +8,9 @@ SOURCES += \
     frac_quadrados.cpp \
     frac_gelo.cpp \
     lib/pen.cpp \
-    frac_exemplos.cpp
+    frac_exemplos_cpp.cpp \
+    lib/cpen.cpp \
+    frac_exemplos_c.cpp
 
 HEADERS += \
     lib/cpen.h \
