@@ -7,12 +7,13 @@ SOURCES += \
     frac_arvore.cpp \
     frac_quadrados.cpp \
     frac_gelo.cpp \
-    pen.cpp
+    lib/pen.cpp \
+    frac_exemplos.cpp
 
 HEADERS += \
-    cpen.h \
-    sfLine.h \
-    pen.h
+    lib/cpen.h \
+    lib/sfLine.h \
+    lib/pen.h
 
 
 CONFIG += c++11

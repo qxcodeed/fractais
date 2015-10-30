@@ -1,5 +1,5 @@
 #include <iostream>
-#include "pen.h"
+#include "lib/pen.h"
 using namespace std;
 
 void arvore(Pen & p, float tam){

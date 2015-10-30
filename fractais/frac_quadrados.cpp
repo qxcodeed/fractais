@@ -1,4 +1,4 @@
-#include "cpen.h"
+#include "lib/cpen.h"
 
 void square(float x, float y, float lado){
     //pen_set_color(rand()%255,rand()%255,rand()%255 );
@@ -38,7 +38,7 @@ void quadrados(){
     pen_close();
 }
 
-int main(){
-    quadrados();
-    return 0;
-}
+//int main(){
+//    quadrados();
+//    return 0;
+//}

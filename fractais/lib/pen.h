@@ -29,9 +29,9 @@ public:
     void rotate(float angulo);
 
     //vira pra esquerda
-    void left(float angulo) {rotate(angulo);}
+    void left(float angulo) {rotate(-angulo);}
     //vira pra direita
-    void right(float angulo){rotate(-angulo);}
+    void right(float angulo){rotate(angulo);}
 
     //vai para essa posicao da tela
     void move(float x, float y);
