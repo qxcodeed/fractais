@@ -28,8 +28,9 @@ void arvore(Pen & p, float tam){
 void arvore()
 {
     Pen pen(800, 800);
-    pen.setSpeed(0);
+    pen.setSpeed(50);
     pen.setXY(400, 750);
+
     pen.setHeading(90);
     arvore(pen, 200);
 

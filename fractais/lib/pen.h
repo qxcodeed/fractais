@@ -58,6 +58,7 @@ public:
     void up(){ isDown = false; }
     void down(){ isDown = true; }
 
+    void circle(float radius);
 
     static int rand();
 

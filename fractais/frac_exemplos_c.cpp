@@ -28,8 +28,8 @@ void fractalc(){
     pen_close();
 }
 
-int main(){
-    fractalc();
-    return 0;
-}
+//int main(){
+//    fractalc();
+//    return 0;
+//}
 

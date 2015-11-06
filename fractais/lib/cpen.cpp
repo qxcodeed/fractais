@@ -94,7 +94,7 @@ float pen_get_x(){
 }
 
 
-float pen_getY(){
+float pen_get_y(){
     return spen->getY();
 }
 
@@ -111,4 +111,8 @@ float pen_get_heading(){
 
 int pen_get_thickness(){
     return spen->getThickness();
+}
+
+void pen_circle(float radius){
+    spen->circle(radius);
 }

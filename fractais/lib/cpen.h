@@ -27,6 +27,7 @@ void pen_up();
 
 void pen_down();
 
+void pen_circle(float radius);
 
 //GETTERS and SETTERS
 
@@ -41,7 +42,7 @@ void pen_set_thickness(int espessura);
 
 float pen_get_x();
 
-float pen_getY();
+float pen_get_y();
 
 int   pen_get_speed();
 

@@ -193,3 +193,27 @@ void Pen::setColor(int R, int G, int B){
     color = Color(R, G, B);
 }
 
+void Pen::circle(float radius) {
+    if(isDown) {
+        register unsigned int i;
+        unsigned int discretization = (unsigned int)std::max(200*radius/std::max(janela->getSize().x, janela->getSize().y), 15.0f);
+        float angle, step_angle = 2*M_PI/discretization;
+
+        Vector2f center_pos = pos;
+
+        pos.x += radius;
+
+        // Calculando os pontos
+        for(i = 0, angle = step_angle; i < discretization; ++i, angle += step_angle) {
+            float next_x, next_y;
+
+            // y subtrai, por conta das coordenadas y da janela
+            next_x = center_pos.x + cos(angle)*radius;
+            next_y = center_pos.y - sin(angle)*radius;
+
+            move(next_x, next_y);
+        }
+
+        pos = center_pos;
+    }
+}
