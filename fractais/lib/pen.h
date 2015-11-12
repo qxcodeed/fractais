@@ -24,17 +24,17 @@ public:
 
     ~Pen();
 
-    void walk(float distance);
+    void walk(double distance);
 
-    void rotate(float angulo);
+    void rotate(double angulo);
 
     //vira pra esquerda
-    void left(float angulo) {rotate(-angulo);}
+    void left(double angulo) {rotate(-angulo);}
     //vira pra direita
-    void right(float angulo){rotate(angulo);}
+    void right(double angulo){rotate(angulo);}
 
     //vai para essa posicao da tela
-    void move(float x, float y);
+    void move(double x, double y);
 
     //espera tantos segundos
     void wait(int seconds);
@@ -58,22 +58,22 @@ public:
     void up(){ isDown = false; }
     void down(){ isDown = true; }
 
-    void circle(float radius);
+    void circle(double radius);
 
     static int rand();
 
     //GETTERS and SETTERS
 
 
-    void  setXY         (float x, float y){ pos.x = x; pos.y = y;   }
-    void  setHeading    (float angulo)    { heading   = angulo;     }
+    void  setXY         (double x, double y){ pos.x = x; pos.y = y;   }
+    void  setHeading    (double angulo)    { heading   = angulo;     }
     void  setSpeed      (int velocidade)  { speed     = velocidade; }
     void  setThickness  (int espessura)   { thickness = espessura;  }
 
-    float getX()        { return pos.x;	    }
-    float getY()        { return pos.y;	    }
+    double getX()        { return pos.x;	    }
+    double getY()        { return pos.y;	    }
     int   getSpeed()    { return speed;     }
-    float getHeading()  { return heading;   }
+    double getHeading()  { return heading;   }
     int   getThickness(){ return thickness; }
 
 protected:
@@ -84,7 +84,7 @@ protected:
     RenderWindow *janela;
 
     Vector2f pos;
-    float heading{0};
+    double heading{0};
     bool isDown{true};
     Color color{Color::White};
     Color backGroundColor{Color::Black};
@@ -101,6 +101,8 @@ protected:
     //void drawPoint(Vector2i point, int espessura);
 
     static void sleep(int msec);
+
+    void processarEventos();
 };
 
 #endif // PEN_H

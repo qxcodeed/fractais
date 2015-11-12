@@ -71,6 +71,18 @@ vector<Vector2f> Pen::make_path(Vector2f a, Vector2f b)
     return path;
 }
 
+void Pen::processarEventos(){
+    sf::Event event;
+    while (janela->pollEvent(event))
+    {
+        // Request for closing the window
+        if (event.type == sf::Event::Closed)
+            janela->close();
+        if(event.type == sf::Event::Resized)
+            janela->setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
+    }
+}
+
 int Pen::rand(){
     static int init = 1;
     if(init == 1){
@@ -106,28 +118,28 @@ Pen::Pen(const Pen &other):
 Pen::~Pen(){delete janela;}
 
 
-void Pen::move(float x, float y){
+void Pen::move(double x, double y){
     vector<Vector2f> path = make_path(pos, Vector2f(x, y));
     static long cont = 0;
-    if(isDown)
-        tracos.push_back(sfLine(path.front(), path.back(), this->thickness, this->color));
 
+    //atualiza a posicao do pincel
+    pos.x = x;
+    pos.y = y;
+
+    //se ele nao esta abaixado entao podemos sair
+    if(!isDown)
+        return;
+
+    //se ele esta abaixado vamos adicionar linhas ao desenho
+    tracos.push_back(sfLine(path.front(), path.back(), this->thickness, this->color));
     if(speed > 0){
         for (size_t i = 0; i < path.size() - 1; i++, cont++){
 
-            sf::Event event;
-            while (janela->pollEvent(event))
-            {
-                // Request for closing the window
-                if (event.type == sf::Event::Closed)
-                    janela->close();
-                if(event.type == sf::Event::Resized)
-                    janela->setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
-            }
+           this->processarEventos();
 
             //drawPoint(Vector2i(path[i].x, path[i].y), thickness);
             tracos.back().setEnd(path[i]);
-
+            //redesenha so o ultimo traco
             janela->draw(tracos.back());
             if(cont % speed == 0){
                 janela->display();
@@ -145,18 +157,15 @@ void Pen::move(float x, float y){
         }
 
     }
-
-    pos.x = x;
-    pos.y = y;
 }
 
-void Pen::walk(float distance){
-    float x = pos.x + distance * std::cos(heading * M_PI/180);
-    float y = pos.y - distance * std::sin(heading * M_PI/180);
+void Pen::walk(double distance){
+    double x = pos.x + distance * std::cos(heading * M_PI/180);
+    double y = pos.y - distance * std::sin(heading * M_PI/180);
     move(x, y);
 }
 
-void Pen::rotate(float angulo){
+void Pen::rotate(double angulo){
     heading -= angulo;
 }
 
@@ -167,14 +176,7 @@ void Pen::wait(int seconds){
 void Pen::wait(){
 
     while(janela->isOpen()){
-        sf::Event event;
-        while (janela->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                janela->close();
-            if(event.type == sf::Event::Resized)
-                janela->setView(sf::View(sf::FloatRect(0, 0, event.size.width, event.size.height)));
-        }
+        processarEventos();
         janela->clear(backGroundColor);
         for(const auto& elem : tracos){
             janela->draw(elem);
@@ -193,19 +195,20 @@ void Pen::setColor(int R, int G, int B){
     color = Color(R, G, B);
 }
 
-void Pen::circle(float radius) {
+void Pen::circle(double radius) {
     if(isDown) {
         register unsigned int i;
-        unsigned int discretization = (unsigned int)std::max(200*radius/std::max(janela->getSize().x, janela->getSize().y), 15.0f);
-        float angle, step_angle = 2*M_PI/discretization;
+        unsigned int discretization = (unsigned int)
+                std::max(200*radius/std::max(janela->getSize().x, janela->getSize().y), 15.0);
+        double angle, step_angle = 2*M_PI/discretization;
 
         Vector2f center_pos = pos;
-
+        double head = this->heading;
         pos.x += radius;
 
         // Calculando os pontos
         for(i = 0, angle = step_angle; i < discretization; ++i, angle += step_angle) {
-            float next_x, next_y;
+            double next_x, next_y;
 
             // y subtrai, por conta das coordenadas y da janela
             next_x = center_pos.x + cos(angle)*radius;
@@ -215,5 +218,6 @@ void Pen::circle(float radius) {
         }
 
         pos = center_pos;
+        this->heading = head;
     }
 }

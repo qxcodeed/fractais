@@ -4,15 +4,20 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    frac_arvore.cpp \
-    frac_quadrados.cpp \
-    frac_gelo.cpp \
     lib/pen.cpp \
-    frac_exemplos_cpp.cpp \
     lib/cpen.cpp \
-    frac_exemplos_c.cpp
+    prof/main.cpp \
+    aluno/frac_exemplos_cpp.cpp \
+    aluno/frac_exemplos_c.cpp
 
 HEADERS += \
+    prof/frac_dragao.h \
+    prof/frac_gelo.h \
+    prof/frac_quadrados.h \
+    prof/frac_trigo.h \
+    prof/frac_arvore.h \
+    prof/frac_circulos.h \
+    prof/frac_triangulos.h \
     lib/cpen.h \
     lib/sfLine.h \
     lib/pen.h

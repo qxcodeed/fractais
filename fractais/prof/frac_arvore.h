@@ -25,7 +25,7 @@ void arvore(Pen & p, float tam){
 }
 
 
-void arvore()
+void frac_arvore()
 {
     Pen pen(800, 800);
     pen.setSpeed(50);

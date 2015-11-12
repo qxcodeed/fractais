@@ -29,7 +29,7 @@ void fractal(){
     p.wait();
 }
 
-int main(){
-    fractal();
-    return 0;
-}
+//int main(){
+//    fractal();
+//    return 0;
+//}
